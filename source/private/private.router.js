@@ -1,9 +1,9 @@
 import template from "./private.html"
-import mainController from "./private.controller";
+import privateController from "./private.controller";
 
-export default function MainRouter($stateProvider) {
+export default function PrivateRouter($stateProvider) {
     return $stateProvider.state('private', {
         template,
-        controller: mainController,
+        controller: privateController
     })
 }

@@ -1,8 +1,8 @@
-import mainRouter from "./private.router";
-import appComponents from "./../components/app-components.module";
+import privateRouter from "./private.router";
+import privateComponents from "./components/private-components.module";
 
 require('./private.scss');
 
-export default angular.module('private', ['ngMessages', appComponents])
-    .config(mainRouter)
+export default angular.module('private', ['ngMessages', privateComponents])
+    .config(privateRouter)
     .name;
