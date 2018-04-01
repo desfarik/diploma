@@ -1,12 +1,12 @@
 {
     "private": {
         "header" : {
-            "title" : "МЕДИЦИНСКИЙ ПОМОЩНИК"
+            "title" : "MEDICAL ASSISTANT"
         },
         "footer" : {
-            "title": "Разработа мною для диплома",
+            "title": "I am developing for a diploma",
             "locale": {
-                "support": "Поддерживаемые языки:",
+                "support": "Supported languages:",
                 "ru": "ru",
                 "en": "en"
             }

@@ -1,0 +1,67 @@
+@import "./../../../../assets/colors";
+
+ma-menu {
+  height: 64px;
+  width: 64px;
+}
+
+.menu-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+
+  .menu-toggle {
+    font-size: 35px;
+    color: $blue-text-color;
+  }
+
+  &:hover {
+    @extend .active-menu;
+  }
+}
+
+.active-menu {
+  background-color: $header-background-2;
+  .menu-toggle {
+    color: $white
+  }
+}
+
+.md-sidenav-right.right-menu {
+  top: 64px;
+  background-color: $header-background-2;
+
+  .items-container {
+    padding-top: 24px;
+    .item {
+      height: 50px;
+      padding-left: 24px;
+      color: $blue-text-color;
+      font-size: 18px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .item:hover {
+      color: $white;
+    }
+    .material-icons {
+      font-size: 30px;
+      margin-top: -4px;
+      padding-right: 8px;
+    }
+    .logout {
+      .material-icons {
+        transform: scale(-1, 1);
+        padding-right: 0;
+        padding-left: 8px;
+      }
+    }
+  }
+}
+
+md-backdrop.md-sidenav-backdrop {
+  top: 64px;
+}

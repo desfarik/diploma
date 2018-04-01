@@ -1,0 +1,25 @@
+@import "./../../assets/colors";
+
+.calendar-container {
+  width: 100%;
+
+  .header {
+    height: 60px;
+    border-radius: 6px 6px 0 0 ;
+    background-color: $calendar-info-block;
+    padding-left: 24px;
+    .material-icons {
+      color: #263238;
+      font-size: 30px;
+      padding-right: 8px;
+      margin-top: -4px;
+    }
+    span {
+      font-size: 22px;
+    }
+  }
+
+  .content {
+    background: $white;
+  }
+}

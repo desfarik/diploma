@@ -1,8 +1,6 @@
-import privateRouter from "./private.router";
 import privateComponents from "./components/private-components.module";
+import calendarModule from "./calendar/calendar.module";
+import homeModule from "./home/home.module";
 
-require('./private.scss');
-
-export default angular.module('private', ['ngMessages', privateComponents])
-    .config(privateRouter)
+export default angular.module('private', ['ngMessages', privateComponents, calendarModule, homeModule])
     .name;

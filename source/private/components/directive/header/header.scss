@@ -1,5 +1,7 @@
+@import "./../../../../assets/colors";
+
 .header-container{
-  background-color: #4eaa00;
+  background-color: $header-background;
   height: 64px;
   .header-title{
     padding-left: 36px;
