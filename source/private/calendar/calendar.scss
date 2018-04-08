@@ -21,6 +21,42 @@
 
   .content {
     background: $white;
-    padding: 24px;
+    padding: 16px 24px;
+  }
+
+  .schedule-content {
+    height: 80px;
+
+    .schedule {
+      display: flex;
+      h3 {
+        min-width: 190px;
+      }
+    }
+
+    .schedule-days {
+      padding-top: 4px;
+      margin: 0 100px 0 40px;
+      span {
+        display: inline-block;
+        padding-right: 24px;
+      }
+    }
+
+    .settings {
+      color: $calendar-text-color;
+      min-height: 30px;
+      height: 30px;
+      min-width: 30px;
+      padding: 0;
+      border-radius: 50%;
+      .material-icons {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .month-select {
+    width: 190px;
   }
 }

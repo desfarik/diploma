@@ -4,7 +4,23 @@
         <span translate="private.calendar.title"></span>
     </div>
     <div class="content" flex="grow">
-        <span class="title">{{calendar.currentDate}}</span>
+        <div class="schedule-content" layout-align="space-between" layout="row">
+            <div class="schedule">
+                <h3 translate="private.calendar.schedule"></h3>
+                <div class="schedule-days">
+                    <span ng-repeat="info in calendar.schedule.work_days">{{info + ';'}}</span>
+                    <div>
+                        <span ng-repeat="info in calendar.schedule.day_off">{{info + ';'}}</span>
+                    </div>
+                </div>
+            </div>
+            <md-button class="settings" ng-click="calendar.openConfiguration()">
+                <i class="material-icons">settings</i>
+            </md-button>
+        </div>
+        <md-select ng-model="calendar.selectedMonth" class="month-select">
+            <md-option ng-repeat=" month in calendar.monthsForSchedule track by $index" ng-value="month">{{month}}</md-option>
+        </md-select>
         <ma-calendar ma-month="calendar.currentMonth"></ma-calendar>
     </div>
 </div>
