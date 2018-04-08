@@ -1,0 +1,14 @@
+@import "../../../../../assets/colors";
+
+.disabled-day {
+  background-color: $disabled-color;
+}
+.day-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 4px 8px;
+
+  &.today {
+    background-color: $lime;
+  }
+}

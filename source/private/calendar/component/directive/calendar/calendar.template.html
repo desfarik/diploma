@@ -1,0 +1,18 @@
+<div class="calendar-wrapper" layout="column">
+    <div layout="row" class="week-day-titles">
+        <div class="week-day-title" flex="15" ng-repeat="days in vm.weekdays">{{days}}</div>
+    </div>
+    <md-tabs md-dynamic-height="true" md-border-bottom="" md-no-ink	 md-autoselect="false" ng-repeat="week in vm.days" md-enable-disconnect="true">
+        <md-tab ng-repeat="day in week track by $index" ng-disabled="vm.isDayOff(day)">
+            <md-tab-label>
+                <ma-day ma-day="day" class="day" ng-click="vm.toggleDay(day)"></ma-day>
+            </md-tab-label>
+            <md-tab-body>
+                <ma-talons ng-show="week.includes(vm.selectedDay)"
+                           ma-day="day"
+                           ma-month="vm.month"
+                           class="talons"></ma-talons>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+</div>

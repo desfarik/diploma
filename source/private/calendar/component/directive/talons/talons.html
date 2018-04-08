@@ -1,0 +1,15 @@
+<div layout="row" class="talon-view">
+    <div flex="20" layout-align="center center" class="talon-date"><span>{{date}}</span></div>
+    <div layout="row">
+        <div class="talon-time" ng-repeat="talon in day.talons"
+             ng-class="{'disabled-time': !!talon.patient}">
+            <span>{{talon.time}}</span>
+            <md-tooltip ng-if="!!talon.patient"
+                        md-direction="top"
+                        md-autohide="true"
+                        md-delay="400">
+                {{talon.patient}}
+            </md-tooltip>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 export default function CalendarController() {
     let vm = this;
-    console.log(vm);
+    vm.currentDate = _.startCase(moment().format("MMMM YYYY"));
+    vm.currentMonth = moment().format("MMMM");
 }

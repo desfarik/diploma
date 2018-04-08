@@ -1,0 +1,66 @@
+@import "../../../../../assets/colors";
+
+.week-day-titles {
+  border: 1px solid $border-title-color;
+}
+
+.week-day-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border-right: 1px solid $border-title-color;
+  &:last-child {
+    border: none;
+  }
+}
+
+.day {
+  display: flex;
+  height: 100%;
+  outline: none;
+}
+
+.talons {
+  display: flex;
+  height: 120px;
+  overflow: hidden;
+  transition: height .4s ease;
+}
+
+.talons.ng-hide {
+  height: 0;
+}
+
+
+
+md-pagination-wrapper {
+  border: 1px solid $border-title-color;
+  height: 50px;
+  margin-top: -1px;
+  width: 100%;
+
+  .md-tab {
+    width: 15%;
+    cursor: pointer!important;
+    color: $calendar-text-color!important;
+    border-right: 1px solid $border-title-color!important;
+    opacity: 1!important;
+    outline: none;
+    padding: 0;
+    &:last-of-type {
+      margin-right: 1px;
+    }
+  }
+}
+
+md-tabs.md-dynamic-height {
+  md-tabs-wrapper {
+    border-color: $border-title-color;
+  }
+  md-tabs-content-wrapper {
+    border: 1px solid $border-title-color;
+    border-top: none;
+    margin-top: -1px;
+  }
+}

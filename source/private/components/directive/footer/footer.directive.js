@@ -8,6 +8,7 @@ export default function FooterDirective($translate) {
         link: (scope) => {
             scope.changeLocale = (locale) => {
                 $translate.use(locale);
+                moment.locale(locale)
             }
         }
     };

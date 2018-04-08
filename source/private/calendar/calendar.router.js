@@ -7,5 +7,7 @@ export default function CalendarRouter($stateProvider) {
         url: '/calendar',
         template,
         controller: calendarController,
+        controllerAs: "calendar",
+        bindToController: true
     })
 }

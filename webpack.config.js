@@ -12,6 +12,20 @@ const PATHS = {
     source: path.join(__dirname, 'source'),
     build: path.join(__dirname, 'build')
 };
+/*
+const history = require('connect-history-api-fallback')
+const express = require('express')
+
+var app = express()
+    .use(history({
+        disableDotRule: true,
+        htmlAcceptHeaders: ['text/html', 'application/xhtml+xml'],
+        verbose: true,
+        index: PATHS.source + '\\index.html'
+    }))
+    .listen(3000);
+*/
+
 
 const common = merge([
     {
@@ -30,14 +44,14 @@ const common = merge([
     htmlLoader()
 ]);
 
-module.exports = function(env) {
-    if (env === 'production'){
+module.exports = function (env) {
+    if (env === 'production') {
         return merge([
             common,
             extractCSS()
         ]);
     }
-    if (env === 'development'){
+    if (env === 'development') {
         return merge([
             common,
             devserver(),
