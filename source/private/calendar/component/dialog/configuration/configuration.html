@@ -1,0 +1,28 @@
+<md-dialog class="configuration-dialog">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 flex="grow" translate="private.calendar.configuration.title"></h2>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon class="material-icons">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content flex="grow" layout="row">
+            <div layout="column" class="config-container">
+                <h3 translate="private.calendar.configuration.select"></h3>
+                <div class="separate"></div>
+                <div class="types-container">
+                    <div ng-repeat="type in configuratonTypes"
+                         ng-click="selectType(type)"
+                         ng-class="{'active': type === selectedType}"
+                         class="config-type"
+                         translate="{{'private.calendar.configuration.types.' + type}}"></div>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row" class="dialog-footer">
+            <md-button class="md-raised md-primary md-button md-ink-ripple">
+                <span translate="private.dialog.apply"></span>
+            </md-button>
+        </md-dialog-actions>
+</md-dialog>
