@@ -1,12 +1,36 @@
+import days from "../../directive/calendar/days";
+
 require('./configuration.scss');
+import workDayTypes from './day-work-types';
 
 export default function ConfigurationDialogController($scope, $mdDialog) {
-    let vm = this;
-
     $scope.cancel = $mdDialog.cancel;
-    $scope.configuratonTypes = ['2-to-2', '2-to-3', '5-to-2', '6-to-1', '7'];
-    $scope.selectedType =  $scope.configuratonTypes[0];
+    $scope.configuratonTypes = workDayTypes;
+    $scope.selectType = selectType;
+    $scope.pattern = /\d{1,2}:\d{2}/;
+    init();
 
-    $scope.selectType = (type) => $scope.selectedType = type;
+    function init() {
+        selectType($scope.configuratonTypes[0])
+    }
+
+    function selectType(type) {
+        $scope.selectedType = type;
+        initDays(type);
+    }
+
+    function initDays(type) {
+        let workDays = [...Array(type.workDays).keys()].map(()=>createDayObject(false));
+        let daysOff = [...Array(type.daysOff).keys()].map(() => createDayObject(true));
+        $scope.workDays = [...workDays, ...daysOff];
+    }
+
+    function createDayObject(dayOff = false) {
+        return {
+            workTimeStart: "",
+            workTimeEnd: "",
+            dayOff: dayOff
+        }
+    }
 
 }

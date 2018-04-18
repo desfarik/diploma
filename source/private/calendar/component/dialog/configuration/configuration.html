@@ -1,13 +1,14 @@
 <md-dialog class="configuration-dialog">
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <h2 flex="grow" translate="private.calendar.configuration.title"></h2>
-                <md-button class="md-icon-button" ng-click="cancel()">
-                    <md-icon class="material-icons">close</md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
-        <md-dialog-content flex="grow" layout="row">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 flex="grow" translate="private.calendar.configuration.title"></h2>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon class="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content flex="grow" layout="row">
+        <form layout="row" flex="grow">
             <div layout="column" class="config-container">
                 <h3 translate="private.calendar.configuration.select"></h3>
                 <div class="separate"></div>
@@ -16,13 +17,41 @@
                          ng-click="selectType(type)"
                          ng-class="{'active': type === selectedType}"
                          class="config-type"
-                         translate="{{'private.calendar.configuration.types.' + type}}"></div>
+                         translate="{{'private.calendar.configuration.types.' + type.name}}"></div>
                 </div>
             </div>
-        </md-dialog-content>
-        <md-dialog-actions layout="row" class="dialog-footer">
-            <md-button class="md-raised md-primary md-button md-ink-ripple">
-                <span translate="private.dialog.apply"></span>
-            </md-button>
-        </md-dialog-actions>
+            <div layout="column" class="day-config-container">
+                <h3 translate="{{'private.calendar.configuration.types.' + selectedType.name}}"></h3>
+                <div class="separate"></div>
+                <div layout="row" layout-align="space-around" class="days-wrapper">
+                    <div ng-repeat="day in workDays" class="day"
+                         ng-class="{'day-off': day.dayOff}">
+                        <md-input-container ng-hide="day.dayOff">
+                            <label translate="private.calendar.configuration.start"></label>
+                            <input ng-model="day.workTimeStart"
+                                   ng-pattern="/^\d{1,2}:\d{2}$/"
+                                   ng-required="!day.dayOff">
+                        </md-input-container>
+                        <md-input-container ng-hide="day.dayOff">
+                            <label translate="private.calendar.configuration.end"></label>
+                            <input ng-model="day.workTimeEnd"
+                                   ng-pattern="/^\d{1,2}:\d{2}$/"
+                                   ng-required="!day.dayOff">
+                        </md-input-container>
+                        <md-checkbox ng-show="selectedType.customizable" md-no-ink aria-label="Checkbox No Ink"
+                                     ng-model="day.dayOff" class="md-primary">
+                            <span class="config-day-off" translate="private.calendar.configuration.dayOff"></span>
+                        </md-checkbox>
+                        <span class="config-day-off" ng-show="day.dayOff && !selectedType.customizable"
+                              translate="private.calendar.configuration.dayOff"></span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" class="dialog-footer">
+        <md-button class="md-raised md-primary md-button md-ink-ripple">
+            <span translate="private.dialog.apply"></span>
+        </md-button>
+    </md-dialog-actions>
 </md-dialog>
