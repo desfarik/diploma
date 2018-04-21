@@ -6,7 +6,6 @@ export default function CalendarController(DayService) {
     vm.selectedDay = DEFAULT_DAY;
     vm.weekdays = [...moment.weekdaysMin().slice(1), _.first(moment.weekdaysMin())];
     vm.days = _.chunk([...getEmptyDays(), ...dayConfig.days, ...getEmptyDays()], 7);
-    console.log(vm.days);
 
     vm.toggleDay = (day) => {
         vm.selectedDay = vm.selectedDay.number === day.number ? DEFAULT_DAY : day;

@@ -21,7 +21,15 @@
                 </div>
             </div>
             <div layout="column" class="day-config-container">
-                <h3 translate="{{'private.calendar.configuration.types.' + selectedType.name}}"></h3>
+                <div layout="row" layout-align="space-between" class="title-wrapper">
+                    <h3 translate="{{'private.calendar.configuration.types.' + selectedType.name}}"></h3>
+                    <div layout="row" class="type-time-select-wrapper">
+                        <h4 translate="private.calendar.configuration.type_time_select"></h4>
+                        <md-select ng-model="selectedTimeReception" class="type-time-select">
+                            <md-option ng-repeat=" type in typesTimeReception track by $index" ng-value="type">{{type}}</md-option>
+                        </md-select>
+                    </div>
+                </div>
                 <div class="separate"></div>
                 <div layout="row" layout-align="space-around" class="days-wrapper">
                     <div ng-repeat="day in workDays" class="day"

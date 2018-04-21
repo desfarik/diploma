@@ -25,14 +25,11 @@
   display: flex;
   height: 120px;
   overflow: hidden;
-  transition: height .4s ease;
 }
 
 .talons.ng-hide {
   height: 0;
 }
-
-
 
 md-pagination-wrapper {
   border: 1px solid $border-title-color;
@@ -42,10 +39,10 @@ md-pagination-wrapper {
 
   .md-tab {
     width: 15%;
-    cursor: pointer!important;
-    color: $calendar-text-color!important;
-    border-right: 1px solid $border-title-color!important;
-    opacity: 1!important;
+    cursor: pointer !important;
+    color: $calendar-text-color !important;
+    border-right: 1px solid $border-title-color !important;
+    opacity: 1 !important;
     outline: none;
     padding: 0;
     &:last-of-type {
@@ -54,7 +51,13 @@ md-pagination-wrapper {
   }
 }
 
-md-tabs.md-dynamic-height {
+md-tabs {
+  transition: min-height .4s ease;
+  min-height: 0 !important;
+  &.active {
+    min-height: 169px !important;
+  }
+
   md-tabs-wrapper {
     border-color: $border-title-color;
   }
@@ -62,5 +65,8 @@ md-tabs.md-dynamic-height {
     border: 1px solid $border-title-color;
     border-top: none;
     margin-top: -1px;
+  }
+  md-tab-content div {
+    overflow: hidden;
   }
 }

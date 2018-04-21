@@ -74,6 +74,24 @@
     border-bottom: 1px solid $border-color;
   }
 
+  .type-time-select-wrapper {
+    padding-top: 3px;
+  }
+
+  .type-time-select {
+    margin: 0;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    .md-select-value {
+      min-height: 22px;
+    }
+  }
+
+  .title-wrapper {
+    height: 37px;
+  }
+
   .dialog-footer {
     border-top: 1px solid $border-color;
     height: 80px;
