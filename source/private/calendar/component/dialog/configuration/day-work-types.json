@@ -1,0 +1,29 @@
+[
+  {
+    "name": "2-to-2",
+    "workDays": 2,
+    "daysOff": 2
+  },
+  {
+    "name": "2-to-3",
+    "workDays": 2,
+    "daysOff": 3
+  },
+  {
+    "name": "5-to-2",
+    "workDays": 5,
+    "daysOff": 2
+  },
+  {
+    "name": "6-to-1",
+    "workDays": 6,
+    "daysOff": 1
+  },
+  {
+    "name": "7",
+    "workDays": 7,
+    "daysOff": 0,
+    "customizable": true
+  }
+]
+

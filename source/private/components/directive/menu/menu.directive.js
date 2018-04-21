@@ -2,7 +2,7 @@ import template from './menu.html'
 
 require('./menu.scss');
 
-export default function MenuDirective($mdSidenav) {
+export default function MenuDirective() {
     return {
         restrict: 'E',
         template,
@@ -12,9 +12,6 @@ export default function MenuDirective($mdSidenav) {
                 {translate: 'calendar', icon: "date_range", href: "calendar"},
                 {translate: 'patients', icon: "people", href: "home"}];
 
-            scope.openLeftMenu = () => $mdSidenav('right').toggle();
-
-            scope.isOpenMenu = () => $mdSidenav('right').isOpen()
         }
     };
 };

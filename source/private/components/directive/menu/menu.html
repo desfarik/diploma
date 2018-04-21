@@ -1,15 +1,12 @@
-<div class="menu-container" ng-class="{'active-menu': isOpenMenu()}" ng-click="openLeftMenu()">
-    <i class="material-icons menu-toggle">menu</i>
-    <md-sidenav md-component-id="right" class="md-sidenav-right right-menu">
-        <div class="items-container">
-            <div class="item" ng-repeat="item in items" layout="row" layout-align="start center" ui-sref="{{item.href}}">
-                <i class="material-icons">{{item.icon}}</i>
-                <span translate="{{'private.menu.' + item.translate}}"></span>
-            </div>
-            <div class="item logout" layout="row" layout-align="start center">
-                <i class="material-icons">keyboard_return</i>
-                <span translate="private.menu.logout"></span>
-            </div>
+<md-sidenav md-component-id="right" class="md-sidenav-right right-menu">
+    <div class="items-container">
+        <div class="item" ng-repeat="item in items" layout="row" layout-align="start center" ui-sref="{{item.href}}">
+            <i class="material-icons">{{item.icon}}</i>
+            <span translate="{{'private.menu.' + item.translate}}"></span>
         </div>
-    </md-sidenav>
-</div>
+        <div class="item logout" layout="row" layout-align="start center">
+            <i class="material-icons">keyboard_return</i>
+            <span translate="private.menu.logout"></span>
+        </div>
+    </div>
+</md-sidenav>
