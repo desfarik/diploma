@@ -1,0 +1,41 @@
+<div flex="grow" layout="row" layout-align="center center">
+    <div class="public-container">
+        <div class="header">
+            <h3 translate="public.login.header">Login</h3>
+        </div>
+        <div class="content">
+            <form name="loginForm">
+                <md-input-container>
+                    <label translate="public.login.login"></label>
+                    <input required name="login" ng-model="login.login">
+                    <div ng-messages="loginForm.login.$error">
+                        <span ng-message="required" translate="required"></span>
+                        <span ng-message="wrongLogin" translate="public.login.wrong_login"></span>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label translate="public.login.password"></label>
+                    <input type="password" required name="password" ng-model="login.password">
+                    <div ng-messages="loginForm.password.$error">
+                        <span ng-message="required" translate="required"></span>
+                        <span ng-message="wrongPassword" translate="public.login.wrong-password"></span>
+                    </div>
+                </md-input-container>
+            </form>
+            <div layout="row" layout-align="space-between">
+                <md-button ng-click="login.processUserInfo(loginForm)"
+                           class="md-raised md-primary md-button md-ink-ripple">
+                    <span translate="public.login.sign"></span>
+                </md-button>
+                <div class="extra-block">
+                    <div>
+                        <span translate="public.login.reset" ui-sref="reset"></span>
+                    </div>
+                    <div>
+                        <span translate="public.login.registration" ui-sref="registration"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

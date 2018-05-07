@@ -1,10 +1,10 @@
 <md-sidenav md-component-id="right" class="md-sidenav-right right-menu">
     <div class="items-container">
-        <div class="item" ng-repeat="item in items" layout="row" layout-align="start center" ui-sref="{{item.href}}">
+        <div class="item" ng-repeat="item in items" layout="row" layout-align="start center" ng-click="closeMenu(item.href)">
             <i class="material-icons">{{item.icon}}</i>
             <span translate="{{'private.menu.' + item.translate}}"></span>
         </div>
-        <div class="item logout" layout="row" layout-align="start center">
+        <div class="item logout" layout="row" layout-align="start center" ng-click="logout()">
             <i class="material-icons">keyboard_return</i>
             <span translate="private.menu.logout"></span>
         </div>

@@ -2,7 +2,7 @@ import template from './menu.html'
 
 require('./menu.scss');
 
-export default function MenuDirective() {
+export default function MenuDirective($mdSidenav, $state, TokenService) {
     return {
         restrict: 'E',
         template,
@@ -12,6 +12,16 @@ export default function MenuDirective() {
                 {translate: 'calendar', icon: "date_range", href: "calendar"},
                 {translate: 'patients', icon: "people", href: "home"}];
 
+            scope.closeMenu = (state) => {
+                $mdSidenav('right').toggle();
+                $state.go(state);
+            };
+
+            scope.logout = ()=> {
+                TokenService.clear();
+                $mdSidenav('right').toggle();
+                $state.go('login');
+            }
         }
     };
 };

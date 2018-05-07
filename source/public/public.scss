@@ -1,0 +1,43 @@
+@import "./../assets/colors";
+
+.public-container {
+  width: 500px;
+  .header {
+    height: 60px;
+    border-radius: 6px 6px 0 0;
+    background-color: $calendar-info-block;
+    padding-left: 24px;
+
+    h3 {
+      line-height: 60px;
+      color: $white;
+    }
+  }
+  .content {
+    background-color: $white;
+    border-radius: 0 0 6px 6px;
+    padding: 32px 64px;
+
+    md-input-container {
+      width: 100%;
+      margin: 12px 0;
+
+      &.md-input-has-value {
+        height: 60px;
+      }
+    }
+    .md-button {
+      font-size: 15px;
+      margin-left: 0;
+    }
+    .extra-block {
+      color: $calendar-text-color;
+      font-size: 14px;
+      margin-right: -40px;
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+
+}

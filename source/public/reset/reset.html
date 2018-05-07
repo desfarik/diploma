@@ -1,0 +1,73 @@
+<div flex="grow" layout="row" layout-align="center center">
+    <div class="public-container registration reset">
+        <div class="header">
+            <h3 translate="public.reset.header"></h3>
+        </div>
+        <div class="content">
+            <form name="resetForm">
+                <div class="verification-block" layout="row" layout-align="space-between">
+                    <md-input-container>
+                        <label translate="public.registration.phone"></label>
+                        <input placeholder="29xxxxxxx" required name="phone" ng-model="reset.phone"
+                               ng-focus="reset.clearError(resetForm.phone, 'wrongPhone');
+                                         reset.clearError(resetForm.phone, 'fieldError')"
+                               ng-maxlength="9"
+                               ng-minlength="9"
+                               ng-pattern="/^\d+$/"
+                               ng-disabled="reset.smsSended">
+                        <div ng-messages="resetForm.phone.$error">
+                            <span ng-message="required" translate="required"></span>
+                            <span ng-message="fieldError" translate="fieldError"></span>
+                            <span ng-message="pattern" translate="public.registration.pattern"></span>
+                            <span ng-message="maxlength,minlength" translate="public.registration.phoneLength"></span>
+                            <span ng-message="wrongPhone" translate="public.reset.wrong_phone">123</span>
+                        </div>
+                    </md-input-container>
+                    <md-button ng-if="!reset.smsSended" ng-click="reset.sendSMS(resetForm)"
+                               class="md-raised md-primary md-button md-ink-ripple">
+                        <span translate="public.registration.send_sms"></span>
+                    </md-button>
+                    <md-input-container class="sms-input" ng-if="reset.smsSended">
+                        <label translate="public.registration.sms"></label>
+                        <input type="password" required name="key" ng-model="reset.key"
+                               ng-focus="reset.clearError(resetForm.key, 'wrongKey')">
+                        <div ng-messages="resetForm.key.$error">
+                            <span ng-message="required" translate="required"></span>
+                            <span ng-message="wrongKey" translate="public.registration.wrong_key"></span>
+                        </div>
+                    </md-input-container>
+                </div>
+                <md-input-container>
+                    <label translate="public.reset.password"></label>
+                    <input type="password" required name="password1" ng-model="reset.password1"
+                           ng-focus="reset.clearError(resetForm.password1, 'repeatingPassword')"
+                           ng-minlength="8">
+                    <div ng-messages="resetForm.password1.$error">
+                        <span ng-message="required" translate="required"></span>
+                        <span ng-message="minlength" translate="public.registration.passwordLength"></span>
+                        <span ng-message="repeatingPassword"
+                              translate="public.registration.repeating_password_error"></span>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label translate="public.reset.repeating_password"></label>
+                    <input type="password" required name="password2" ng-model="reset.password2"
+                           ng-focus="reset.clearError(resetForm.password2, 'repeatingPassword')"
+                           ng-minlength="9">
+                    <div ng-messages="resetForm.password2.$error">
+                        <span ng-message="required" translate="required"></span>
+                        <span ng-message="minlength" translate="public.registration.passwordLength"></span>
+                        <span ng-message="repeatingPassword"
+                              translate="public.registration.repeating_password_error"></span>
+                    </div>
+                </md-input-container>
+            </form>
+            <div layout="row" layout-align="space-between">
+                <md-button ng-click="reset.processUserInfo(resetForm)"
+                           class="md-raised md-primary md-button md-ink-ripple">
+                    <span translate="public.reset.registration"></span>
+                </md-button>
+            </div>
+        </div>
+    </div>
+</div>

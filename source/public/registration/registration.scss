@@ -1,0 +1,25 @@
+
+.registration.public-container {
+  width: 600px;
+}
+
+.public-container .content .verification-block {
+  md-input-container {
+    width: 240px;
+  }
+  .sms-input {
+    width: 120px;
+    max-height: 40px;
+    .md-input-messages-animation {
+      width: 160px;
+    }
+  }
+  .md-input-messages-animation {
+    width: 300px;
+  }
+
+  .md-button {
+    margin: 8px 0 0;
+    height: 36px;
+  }
+}
