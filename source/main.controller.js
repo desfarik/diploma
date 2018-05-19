@@ -1,4 +1,4 @@
-export default function MainController($state, $rootScope, $http) {
+export default function MainController($state, $rootScope, ToastService) {
     let vm = this;
     console.log(moment().format("MMMM"));
 
@@ -19,4 +19,8 @@ export default function MainController($state, $rootScope, $http) {
         });
 
     const isPublicState = (state) => state.data && state.data.publicState;
+
+
+    ToastService.start();
+
 }

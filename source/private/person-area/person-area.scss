@@ -1,0 +1,53 @@
+@import "./../../assets/colors";
+
+.person-container {
+  width: 100%;
+  .page-header {
+    background-color: $green-color;
+  }
+  .page-content {
+   padding: 0;
+
+    form {
+      display: flex;
+    }
+  }
+  .image-column {
+    padding: 16px 30px;
+    border-right: 1px solid $border-color;
+    text-align: center;
+    width: 400px;
+    #file {
+      display: none;
+    }
+    #image {
+      display: flex;
+      height: 350px;
+      padding-bottom: 15px;
+      .material-icons {
+        padding: 20px;
+        border-radius: 50%;
+        font-size: 200px;
+        text-align: center;
+        border: 1px solid $calendar-text-color;
+        color: $gray-color;
+      }
+    }
+    .error {
+      font-size: 16px;
+      color: red;
+    }
+  }
+  md-input-container {
+  display: block;
+  }
+  .user-details {
+    padding: 40px;
+    h3 {
+      padding-bottom: 8px;
+    }
+    .md-button {
+      float: right;
+    }
+  }
+}

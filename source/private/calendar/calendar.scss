@@ -2,30 +2,12 @@
 
 .calendar-container {
   width: 100%;
-
-  .header {
-    height: 60px;
-    border-radius: 6px 6px 0 0 ;
+  .page-header {
     background-color: $calendar-info-block;
-    padding-left: 24px;
-    .material-icons {
-      color: #263238;
-      font-size: 30px;
-      padding-right: 8px;
-      margin-top: -4px;
-    }
-    span {
-      font-size: 22px;
-    }
-  }
-
-  .content {
-    background: $white;
-    padding: 16px 24px;
   }
 
   .schedule-content {
-    height: 80px;
+    height: 200px;
 
     .schedule {
       display: flex;
@@ -58,6 +40,6 @@
 
   .month-select {
     width: 190px;
-    padding-top: 8px;
+    padding: 24px 0 16px;
   }
 }

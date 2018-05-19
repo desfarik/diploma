@@ -1,9 +1,9 @@
 <div class="calendar-container" layout="column">
-    <div class="header" layout="row" layout-align="start center">
+    <div class="page-header" layout="row" layout-align="start center">
         <i class="material-icons">date_range</i>
         <span translate="private.calendar.title"></span>
     </div>
-    <div class="content" flex="grow">
+    <div class="page-content" flex="grow" layout="column">
         <div class="schedule-content" layout-align="space-between" layout="row">
             <div class="schedule">
                 <h3 translate="private.calendar.schedule"></h3>
@@ -22,5 +22,11 @@
             <md-option ng-repeat=" month in calendar.monthsForSchedule track by $index" ng-value="month">{{month}}</md-option>
         </md-select>
         <ma-calendar ma-month="calendar.currentMonth"></ma-calendar>
+        <div layout="row" layout-align="end end" flex="grow">
+            <md-button class="md-raised md-primary md-button md-ink-ripple"
+                       ng-click="calendar.save()">
+                <span translate="private.calendar.save"></span>
+            </md-button>
+        </div>
     </div>
 </div>

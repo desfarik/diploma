@@ -1,0 +1,128 @@
+@import "./../../assets/colors";
+
+.patients-container {
+  width: 100%;
+  .page-header {
+    background-color: $cyan-2;
+    .material-icons.patients {
+      position: relative;
+      top: 6px;
+      margin: 0;
+    }
+    .add-button {
+      font-size: 36px;
+    }
+  }
+  .page-content {
+    padding: 0;
+    height: 0;
+
+    .user-column {
+      border-right: 1px solid $border-color;
+      min-width: 370px;
+      max-width: 370px;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      .user {
+        height: 65px;
+        border-bottom: 1px solid $border-color;
+        ma-name {
+          padding: 0 8px;
+        }
+        .full-name {
+          font-weight: bold;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          max-width: 300px;
+        }
+      }
+      .user.active {
+        background-color: $blue-text-color !important;
+      }
+    }
+  }
+}
+
+.patient-info {
+  padding: 24px;
+  .details {
+    font-weight: bold;
+    font-size: 17px;
+    padding-bottom: 12px;
+  }
+  .details + span {
+    color: $gray-color;
+  }
+  .material-icons {
+    color: $gray-color-3;
+    font-size: 30px;
+    line-height: 35px;
+    margin: 0 12px;
+  }
+}
+
+.disease-block {
+  height: calc(100% - 128px);
+  padding: 0 24px;
+  .header {
+    font-weight: bold;
+    font-size: 17px;
+    color: $dark-color;
+    .material-icons {
+      color: $gray-color-3;
+      font-size: 30px;
+    }
+  }
+  .headers {
+    padding-top: 24px;
+    padding-bottom: 15px;
+    div {
+      text-align: center;
+      color: $gray-color;
+    }
+    div:first-child {
+      text-align: left;
+    }
+  }
+  .content {
+    height: calc(100% - 98px);
+    overflow-y: auto;
+    margin-right: -25px;
+    padding-right: 25px;
+    .disease-item {
+      height: 55px;
+      border-bottom: 1px solid $disabled-color-2;
+      div {
+        text-align: center;
+        color: $gray-color;
+        line-height: 50px;
+      }
+      div:first-child {
+        text-align: left;
+        padding-left: 8px;
+      }
+    }
+    .material-icons {
+      color: $gray-color-3;
+      font-size: 30px;
+      line-height: 50px;
+      margin: 0 12px;
+    }
+    .disease-item:first-child {
+      border-top: 1px solid $disabled-color-2;
+    }
+  }
+}
+
+.md-title {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 12px;
+}
+
+.md-dialog-content .md-prompt-input-container {
+  margin-top: 10px;
+  margin-bottom: -24px;
+}

@@ -1,0 +1,97 @@
+@import "./../../assets/colors";
+
+.chats-container {
+  width: 100%;
+  .page-header {
+    background-color: $green-color-3;
+    .material-icons {
+      margin: 0;
+    }
+  }
+  .page-content {
+    padding: 0;
+    height: 0;
+
+    .user-column {
+      border-right: 1px solid $border-color;
+      min-width: 370px;
+      max-width: 370px;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      .user {
+        border-bottom: 1px solid $border-color;
+        ma-name {
+          padding: 0 8px;
+        }
+        .full-name {
+          font-weight: bold;
+        }
+        .full-name, .last-message {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          max-width: 300px;
+        }
+      }
+      .user.active {
+        background-color: $blue-text-color !important;
+      }
+      .user.has-message {
+        background-color: $orange;
+      }
+    }
+    .chat {
+      padding: 0 0 16px 12px;
+    }
+    .chat-wrapper {
+      height: calc(100% - 95px);
+    }
+    .chat-area {
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      padding-right: 24px;
+      .message {
+        display: flex;
+        justify-content: flex-end;
+        span {
+          background-color: $cyan-2;
+          border-radius: 12px;
+          padding: 0 15px;
+          margin: 10px 0;
+          white-space: pre-wrap;
+        }
+      }
+
+      .patient-message {
+        justify-content: flex-start;
+      }
+    }
+    .empty {
+      height: 88%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .input-area {
+      margin-top: 10px;
+      min-height: 80px;
+      textarea {
+        outline: none;
+        resize: none;
+        height: 80px;
+        width: 100%;
+        border-radius: 6px;
+        color: $gray-color;
+        padding: 8px 0 0 8px;
+      }
+      .material-icons {
+        padding: 7px;
+        color: $gray-color-2;
+      }
+    }
+  }
+}

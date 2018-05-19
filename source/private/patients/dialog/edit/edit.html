@@ -1,0 +1,61 @@
+<md-dialog class="edit-dialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 flex="grow" translate="private.patients.dialog.edit.title"></h2>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon class="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content flex="grow" layout="row">
+        <div layout="column" class="config-container">
+            <h4 translate="private.patients.dialog.edit.subtitle1"></h4>
+            <div class="separate"></div>
+            <div class="configs-wrapper">
+                <form name="symptomsForm" layout="column">
+                    <textarea id="symptoms" placeholder="Введите симптомы или другую информацию"
+                              ng-model="symptoms">
+                    </textarea>
+                    <md-button type="submit" class="md-raised md-primary md-button md-ink-ripple"
+                               ng-click="addSymptoms(symptomsForm)">
+                        <span translate="{{'private.patients.dialog.edit.' + (EDIT_MODE ? 'save' : 'add')}}"></span>
+                    </md-button>
+                </form>
+            </div>
+        </div>
+        <div layout="column" class="body-message">
+            <div layout="column" class="body-wrapper">
+                <div flex="10" layout="row" class="diag-wrapper">
+                    <span class="field" translate="private.patients.dialog.edit.diag"></span>
+                    <md-input-container>
+                        <input required ng-model="diag">
+                    </md-input-container>
+                    <i class="material-icons ma-button" ng-click="editDiag()">
+                        edit
+                    </i>
+                </div>
+                <div class="chronology-wrapper" layout="column" flex>
+                    <span class="field" translate="private.patients.dialog.edit.chronology"></span>
+                    <div class="history" layout="column">
+                        <div class="element" layout="row" ng-repeat="action in history | orderBy:id:true">
+                            <div flex="70" class="text" layout="row" layout-align="start center">
+                                <p>{{action.text}}</p>
+                            </div>
+                            <div flex layout-align="center center" layout="row">
+                                <span>{{action.date}}</span>
+                                <i ng-hide="EDIT_MODE" class="material-icons ma-button"
+                                   ng-click="editText(action)">edit</i>
+                                <i ng-hide="EDIT_MODE" class="material-icons ma-button" ng-click="deleteText(action)">close</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" class="dialog-footer">
+        <md-button class="md-raised md-primary md-button md-ink-ripple">
+            <span translate="private.patients.dialog.edit.save"></span>
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

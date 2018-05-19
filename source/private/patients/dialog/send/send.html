@@ -1,0 +1,69 @@
+<md-dialog class="send-dialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 flex="grow" translate="private.patients.dialog.send.title"></h2>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon class="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content flex="grow" layout="row">
+        <div layout="column" class="config-container">
+            <h3 translate="private.patients.dialog.send.subtitle1"></h3>
+            <div class="separate"></div>
+            <div class="configs-wrapper">
+                <form name="config" layout="column">
+                    <md-input-container>
+                        <label translate="private.patients.dialog.send.name"></label>
+                        <input required ng-model="name">
+                    </md-input-container>
+                    <md-input-container>
+                        <label translate="private.patients.dialog.send.interval"></label>
+                        <input required ng-model="interval">
+                    </md-input-container>
+                    <md-input-container>
+                        <label translate="private.patients.dialog.send.amount"></label>
+                        <input required ng-model="amount">
+                    </md-input-container>
+                    <md-input-container>
+                        <label translate="private.patients.dialog.send.period"></label>
+                        <input required ng-model="period">
+                    </md-input-container>
+                    <md-button type="submit" class="md-raised md-primary md-button md-ink-ripple" ng-click="addTablet(config)">
+                        <span translate="private.patients.dialog.send.add"></span>
+                    </md-button>
+                </form>
+            </div>
+        </div>
+        <div layout="column" class="body-message">
+            <h3 translate="private.patients.dialog.send.subtitle2"></h3>
+            <div class="separate"></div>
+            <div layout="column" class="body-wrapper">
+                <div flex="10" layout="row">
+                    <span class="field" translate="private.patients.dialog.send.diag"></span>
+                    <span>{{diag}}</span>
+                </div>
+                <div flex="40" layout="column">
+                    <span class="field" translate="private.patients.dialog.send.description"></span>
+                    <textarea id="textArea" placeholder="Введите сообщение"
+                              ng-model="description">
+                    </textarea>
+                </div>
+                <div class="tablets-wrapper" layout="column" flex>
+                    <span class="field" translate="private.patients.dialog.send.tablets"></span>
+                    <div class="tablets" layout="row">
+                        <div class="tablet" ng-repeat="tablet in tablets">
+                            <span>{{tablet.name}}</span>
+                            <md-icon ng-click="removeTablet(tablet)" class="material-icons ma-button">close</md-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row" class="dialog-footer">
+        <md-button class="md-raised md-primary md-button md-ink-ripple">
+            <span translate="private.patients.dialog.send.send"></span>
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

@@ -1,0 +1,54 @@
+<div class="person-container" layout="column" cg-busy="profile.loading">
+    <div class="page-header" layout="row" layout-align="start center">
+        <i class="material-icons">person</i>
+        <span translate="private.person.title"></span>
+    </div>
+    <div class="page-content" flex="grow" layout="column">
+        <form name="imageForm" flex="100">
+            <div layout="row" flex="100">
+                <div class="image-column" layout="column">
+                    <div id="image" layout-align="center center">
+                        <i ng-if="!profile.image" class="material-icons">person</i>
+                        <img ng-if="profile.image" src="{{profile.image}}">
+                    </div>
+                    <label for="file" class="md-raised md-primary md-button md-ink-ripple">
+                        <span translate="private.person.upload"></span>
+                    </label>
+                    <input id="file" type="file" ngf-select="profile.select($file,imageForm)" ng-model="profile.file"
+                           name="file" ngf-pattern="'.png,.jpg,.jpeg'"
+                           ngf-ressize="{width: 350, height: 350, centerCrop: true}">
+                    <div class="error" ng-messages="imageForm.file.$error">
+                        <span ng-message="pattern" translate="private.person.error"></span>
+                    </div>
+                </div>
+                <div flex="grow" class="user-details">
+                    <h3 translate="private.person.subtitle"></h3>
+                    <md-input-container>
+                        <label translate="private.person.first_name"></label>
+                        <input type="password" name="first_name" ng-model="profile.name">
+                    </md-input-container>
+                    <md-input-container>
+                        <label translate="private.person.second_name"></label>
+                        <input type="password" name="second_name" ng-model="profile.secondName">
+                    </md-input-container>
+                    <md-input-container>
+                        <label translate="private.person.phone"></label>
+                        <input type="password" name="phone" ng-model="profile.phone">
+                    </md-input-container>
+                    <md-input-container>
+                        <label translate="private.person.address"></label>
+                        <input type="password" name="address" ng-model="profile.address">
+                    </md-input-container>
+                    <md-input-container>
+                        <label translate="private.person.position"></label>
+                        <input type="password" name="position" ng-model="profile.position">
+                    </md-input-container>
+                    <md-button class="md-raised md-primary md-button md-ink-ripple"
+                               ng-click="profile.save()">
+                        <span translate="private.calendar.save"></span>
+                    </md-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

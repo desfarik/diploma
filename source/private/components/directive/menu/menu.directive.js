@@ -9,12 +9,14 @@ export default function MenuDirective($mdSidenav, $state, TokenService) {
         link: (scope) => {
             scope.items = [
                 {translate: 'home', icon: "home", href: "home"},
+                {translate: 'person', icon: "person", href: "person"},
+                {translate: 'chats', icon: "message", href: "chats"},
                 {translate: 'calendar', icon: "date_range", href: "calendar"},
-                {translate: 'patients', icon: "people", href: "home"}];
+                {translate: 'patients', icon: "people", href: "patients"}];
 
             scope.closeMenu = (state) => {
                 $mdSidenav('right').toggle();
-                $state.go(state);
+                $state.go(state,{userId:123});
             };
 
             scope.logout = ()=> {

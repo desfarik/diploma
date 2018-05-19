@@ -56,6 +56,10 @@
         padding-left: 8px;
       }
     }
+    &:nth-child(3) {}
+    .material-icons {
+      margin-top: 0;
+    }
   }
 }
 
