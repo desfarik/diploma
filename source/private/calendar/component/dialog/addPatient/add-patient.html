@@ -1,0 +1,42 @@
+<md-dialog class="add-patient-dialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 flex="grow" translate="private.calendar.patient.title"></h2>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon class="material-icons">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content flex="grow" layout="column">
+        <div class="wrapper" flex="20" layout="row" layout-align="center center">
+            <span class="talon" translate="private.calendar.patient.talon"></span>
+            <span>{{talonDisplay}}</span>
+        </div>
+        <div layout="row" layout-align="center center">
+            <div flex="80">
+                <md-autocomplete
+                        md-selected-item="selectedPatient"
+                        md-search-text="searchText"
+                        md-items="patient in search(searchText)"
+                        md-item-text="patient.display"
+                        md-min-length="0"
+                        placeholder="Введите имя пациента">
+                    <md-item-template>
+                        <span md-highlight-text="searchText" md-highlight-flags="^i">{{patient.display}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        <span translate="private.calendar.patient.empty"></span>
+                    </md-not-found>
+                </md-autocomplete>
+            </div>
+        </div>
+
+    </md-dialog-content>
+    <md-dialog-actions layout="row" class="dialog-footer">
+        <md-button class="md-raised md-primary md-button md-ink-ripple"
+                   ng-click="select()"
+                   ng-disabled="!selectedPatient">
+            <span translate="private.calendar.patient.select"></span>
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

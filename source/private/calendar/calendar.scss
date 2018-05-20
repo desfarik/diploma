@@ -7,7 +7,7 @@
   }
 
   .schedule-content {
-    height: 200px;
+    height: 60px;
 
     .schedule {
       display: flex;
@@ -41,5 +41,16 @@
   .month-select {
     width: 190px;
     padding: 24px 0 16px;
+  }
+  .empty-calendar {
+    height: 100%;
+    .material-icons {
+      color: $calendar-text-color;
+      line-height: 25px;
+      padding-left: 4px;
+    }
+  }
+  .hidden {
+    visibility: hidden;
   }
 }

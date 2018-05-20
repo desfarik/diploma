@@ -1,11 +1,19 @@
-import dayConfig from "./days";
-
-export default function CalendarController(DayService) {
+export default function CalendarController(DayService, $scope) {
     let vm = this;
     const DEFAULT_DAY = {number: -1};
     vm.selectedDay = DEFAULT_DAY;
     vm.weekdays = [...moment.weekdaysMin().slice(1), _.first(moment.weekdaysMin())];
-    vm.days = _.chunk([...getFirstEmptyDays(), ...dayConfig.days, ...getLastEmptyDays()], 7);
+
+    $scope.$on("update", (e, month) => {
+        if (!_.isEmpty(month)) {
+            vm.month = _.clone(month);
+            vm.month.days = setFuckingNumbers(vm.month.days);
+            console.log(vm.month);
+            vm.days = _.chunk([...getFirstEmptyDays(vm.month.month), ...vm.month.days, ...getLastEmptyDays(vm.month.month)], 7);
+        } else {
+            vm.days = [];
+        }
+    });
 
     vm.toggleDay = (day) => {
         vm.selectedDay = vm.selectedDay.number === day.number ? DEFAULT_DAY : day;
@@ -13,20 +21,31 @@ export default function CalendarController(DayService) {
 
     vm.isDayOff = DayService.isDayOff;
 
-    function getFirstEmptyDays() {
-        const firstDayOfMonth = Number(moment().startOf('month').format('d'));
+    function getFirstEmptyDays(id) {
+        const firstDayOfMonth = Number(moment().month(id).startOf('month').format('d'));
         const amountOfDays = !!firstDayOfMonth ? firstDayOfMonth - 1 : 6;
         return [...Array(amountOfDays)].map(() => {
             return {number: ''}
         });
     }
 
-    function getLastEmptyDays() {
-        const firstDayOfMonth = Number(moment().endOf('month').format('d'));
-        console.log(firstDayOfMonth);
-        const amountOfDays = !!firstDayOfMonth ? firstDayOfMonth : 6;
+    function getLastEmptyDays(id) {
+        const lastDayOfMonth = Number(moment().month(id).endOf('month').format('d'));
+        const amountOfDays = 7 - lastDayOfMonth;
         return [...Array(amountOfDays)].map(() => {
             return {number: ''}
         });
+    }
+
+    function setFuckingNumbers(days) {
+        let newDays = [];
+        for (let i = 0; i < days.length; i++) {
+            newDays.push({
+                day_off: days[i].day_off,
+                talons: days[i].talons,
+                number: i + 1
+            })
+        }
+        return newDays;
     }
 }

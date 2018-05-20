@@ -4,9 +4,9 @@
     </div>
     <md-tabs md-border-bottom="" md-no-ink	 md-autoselect="false" ng-repeat="week in vm.days" md-enable-disconnect="true"
              ng-class="{'active': week.includes(vm.selectedDay)}">
-        <md-tab ng-repeat="day in week track by $index" ng-disabled="vm.isDayOff(day)">
+        <md-tab ng-repeat="day in week track by $index" ng-disabled="vm.isDayOff(day, vm.month.month)">
             <md-tab-label>
-                <ma-day ma-day="day" class="day" ng-click="vm.toggleDay(day)"></ma-day>
+                <ma-day ma-day="day" ma-month="vm.month.month" class="day" ng-click="vm.toggleDay(day)"></ma-day>
             </md-tab-label>
             <md-tab-body>
                 <ma-talons ma-day="day"

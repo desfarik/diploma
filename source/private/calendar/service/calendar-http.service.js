@@ -11,12 +11,12 @@ export default function CalendarHttpService($http) {
                 }
             });
 
-    this.saveCalendars = (calendar) => $http.post('api/calendar/save', {
-        data: calendar,
-        lastUpdate: JSON.parse(localStorage.lastUpdateCalendar)
+    this.saveCalendars = (calendar, schedule) => $http.post('api/calendar/save', {
+        data: JSON.stringify({months: calendar, schedule: schedule}),
+        lastUpdate: getLastUpdateDate()
     }).then(response => {
-        localStorage.calendar = JSON.stringify(calendar);
-        localStorage.lastUpdateCalendar = JSON.stringify(localStorage.lastUpdateCalendar);
+        localStorage.calendar = JSON.stringify({months: calendar, schedule: schedule});
+        localStorage.lastUpdateCalendar = JSON.stringify(getLastUpdateDate());
         return response;
     });
 
@@ -27,9 +27,12 @@ export default function CalendarHttpService($http) {
 
     function getCalendars() {
         return $http.get('api/calendar/get').then(response => {
-            localStorage.calendar = JSON.stringify(response.data.data);
-            localStorage.lastUpdateCalendar = JSON.stringify(response.data.lastUpdate);
-            return response.data.data;
+            if (response.data) {
+                localStorage.calendar = response.data.data;
+                localStorage.lastUpdateCalendar = JSON.stringify(response.data.lastUpdate);
+                return JSON.parse(response.data.data);
+            }
+            return response.data;
         })
     }
 

@@ -8,7 +8,7 @@
         </div>
     </md-toolbar>
     <md-dialog-content flex="grow" layout="row">
-        <form layout="row" flex="grow">
+        <form name="days" layout="row" flex="grow">
             <div layout="column" class="config-container">
                 <h3 translate="private.calendar.configuration.select"></h3>
                 <div class="separate"></div>
@@ -26,7 +26,9 @@
                     <div layout="row" class="type-time-select-wrapper">
                         <h4 translate="private.calendar.configuration.type_time_select"></h4>
                         <md-select ng-model="selectedTimeReception" class="type-time-select">
-                            <md-option ng-repeat=" type in typesTimeReception track by $index" ng-value="type">{{type}}</md-option>
+                            <md-option ng-repeat=" type in typesTimeReception track by $index" ng-value="type">
+                                {{type}}
+                            </md-option>
                         </md-select>
                     </div>
                 </div>
@@ -38,13 +40,15 @@
                             <label translate="private.calendar.configuration.start"></label>
                             <input ng-model="day.workTimeStart"
                                    ng-pattern="/^\d{1,2}:\d{2}$/"
-                                   ng-required="!day.dayOff">
+                                   ng-required="!day.dayOff"
+                                   placeholder="hh:mm">
                         </md-input-container>
                         <md-input-container ng-hide="day.dayOff">
                             <label translate="private.calendar.configuration.end"></label>
                             <input ng-model="day.workTimeEnd"
                                    ng-pattern="/^\d{1,2}:\d{2}$/"
-                                   ng-required="!day.dayOff">
+                                   ng-required="!day.dayOff"
+                                   placeholder="hh:mm">
                         </md-input-container>
                         <md-checkbox ng-show="selectedType.customizable" md-no-ink aria-label="Checkbox No Ink"
                                      ng-model="day.dayOff" class="md-primary">
@@ -58,7 +62,8 @@
         </form>
     </md-dialog-content>
     <md-dialog-actions layout="row" class="dialog-footer">
-        <md-button class="md-raised md-primary md-button md-ink-ripple">
+        <md-button class="md-raised md-primary md-button md-ink-ripple"
+                   ng-click="save(days)">
             <span translate="private.dialog.apply"></span>
         </md-button>
     </md-dialog-actions>

@@ -6,7 +6,8 @@ export default function DayDirective(DayService) {
     return {
         restrict: 'E',
         scope: {
-            day: '=maDay'
+            day: '=maDay',
+            month: '=maMonth',
         },
         template,
         link: (scope) => {

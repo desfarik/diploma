@@ -6,6 +6,7 @@ import TalonsDirective from "./component/directive/talons/talons.directive";
 import dayService from "./component/service/day.service";
 import ConfigurationController from "./component/dialog/configuration/configuration.controller";
 import calendarService from "./service/calendar-http.service";
+import AddPatientController from "./component/dialog/addPatient/add-patient.controller";
 
 require('./calendar.scss');
 
@@ -18,4 +19,5 @@ export default angular.module('private.calendar', [])
     .service("CalendarService", calendarService)
     .controller("CalendarDirectiveController", CalendarDirectiveController)
     .controller("ConfigurationController", ConfigurationController)
+    .controller("AddPatientController", AddPatientController)
     .name;

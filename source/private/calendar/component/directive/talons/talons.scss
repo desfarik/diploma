@@ -18,12 +18,17 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
+    outline: none;
   }
 
   .disabled-time {
     background-color: $disabled-color-2;
     color: $white;
   }
+}
+
+.talons-wrapper {
+  flex-wrap: wrap;
 }
 
 .md-tooltip {

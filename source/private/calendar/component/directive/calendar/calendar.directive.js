@@ -5,9 +5,6 @@ export default function CalendarDirective() {
     return {
         restrict: 'E',
         template,
-        scope:{
-            month: '=maMonth'
-        },
         controller: "CalendarDirectiveController",
         controllerAs: "vm",
         bindToController: true

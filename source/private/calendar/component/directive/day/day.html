@@ -1,5 +1,5 @@
-<div ng-class="[{'disabled-day' : isDayOff(day),
-                 'today': isToday(day)}]"
+<div ng-class="[{'disabled-day' : isDayOff(day,month),
+                 'today': isToday(day, month)}]"
      class="day-wrapper">
     <span>{{day.number}}</span>
 </div>

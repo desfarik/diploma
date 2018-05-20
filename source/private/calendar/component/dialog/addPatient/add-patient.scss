@@ -1,0 +1,23 @@
+@import "./../../../../../assets/colors";
+
+.add-patient-dialog {
+  width: 80%;
+  height: 50%;
+  max-width: 600px;
+  min-width: 300px;
+  md-dialog-content {
+    padding: 24px;
+  }
+
+  .dialog-footer {
+    border-top: 1px solid $border-color;
+    height: 80px;
+  }
+  .talon {
+
+    padding-right: 8px;
+  }
+  .wrapper {
+    padding: 40px 0;
+  }
+}

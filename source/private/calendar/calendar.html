@@ -1,4 +1,4 @@
-<div class="calendar-container" layout="column">
+<div class="calendar-container" layout="column" cg-busy="calendar.loading">
     <div class="page-header" layout="row" layout-align="start center">
         <i class="material-icons">date_range</i>
         <span translate="private.calendar.title"></span>
@@ -8,9 +8,9 @@
             <div class="schedule">
                 <h3 translate="private.calendar.schedule"></h3>
                 <div class="schedule-days">
-                    <span ng-repeat="info in calendar.schedule.work_days">{{info + ';'}}</span>
+                    <span ng-repeat="info in calendar.schedule.workDays">{{info}}</span>
                     <div>
-                        <span ng-repeat="info in calendar.schedule.day_off">{{info + ';'}}</span>
+                        <span>{{calendar.schedule.dayOff}}</span>
                     </div>
                 </div>
             </div>
@@ -18,15 +18,23 @@
                 <i class="material-icons">settings</i>
             </md-button>
         </div>
-        <md-select ng-model="calendar.selectedMonth" class="month-select">
-            <md-option ng-repeat=" month in calendar.monthsForSchedule track by $index" ng-value="month">{{month}}</md-option>
-        </md-select>
-        <ma-calendar ma-month="calendar.currentMonth"></ma-calendar>
-        <div layout="row" layout-align="end end" flex="grow">
-            <md-button class="md-raised md-primary md-button md-ink-ripple"
-                       ng-click="calendar.save()">
-                <span translate="private.calendar.save"></span>
-            </md-button>
+        <div ng-show="calendar.calendars" id="calendar">
+            <md-select ng-model="calendar.selectedMonthId" class="month-select" ng-change="calendar.update()">
+                <md-option ng-repeat=" month in calendar.monthsForSchedule track by $index" ng-value="month">
+                    {{month.text}}
+                </md-option>
+            </md-select>
+            <ma-calendar></ma-calendar>
+            <div layout="row" layout-align="end end" flex="grow">
+                <md-button class="md-raised md-primary md-button md-ink-ripple"
+                           ng-click="calendar.save()">
+                    <span translate="private.calendar.save"></span>
+                </md-button>
+            </div>
+        </div>
+        <div ng-hide="calendar.calendars" class="empty-calendar" layout="row" layout-align="center center">
+            <span translate="private.calendar.empty"></span>
+            <i class="material-icons">settings</i>
         </div>
     </div>
 </div>

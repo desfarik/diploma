@@ -1,6 +1,7 @@
+import UserService from "./private/components/service/user.service";
+
 export default function MainController($state, $rootScope, ToastService) {
     let vm = this;
-    console.log(moment().format("MMMM"));
 
 
     $rootScope.$on('$stateChangeSuccess',
@@ -22,5 +23,4 @@ export default function MainController($state, $rootScope, ToastService) {
 
 
     ToastService.start();
-
 }
