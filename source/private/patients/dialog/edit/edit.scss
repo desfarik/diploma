@@ -95,10 +95,11 @@
         text-align: left;
         padding-left: 8px;
         overflow: hidden;
-        white-space: pre;
+        white-space: pre-wrap;
         text-overflow: ellipsis;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        max-width: 480px;
       }
     }
     .element:first-child {

@@ -41,7 +41,7 @@
             <div layout="column" class="body-wrapper">
                 <div flex="10" layout="row">
                     <span class="field" translate="private.patients.dialog.send.diag"></span>
-                    <span>{{diag}}</span>
+                    <span>{{element.diag}}</span>
                 </div>
                 <div flex="40" layout="column">
                     <span class="field" translate="private.patients.dialog.send.description"></span>
@@ -62,7 +62,7 @@
         </div>
     </md-dialog-content>
     <md-dialog-actions layout="row" class="dialog-footer">
-        <md-button class="md-raised md-primary md-button md-ink-ripple">
+        <md-button class="md-raised md-primary md-button md-ink-ripple" ng-click="save()">
             <span translate="private.patients.dialog.send.send"></span>
         </md-button>
     </md-dialog-actions>

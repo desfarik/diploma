@@ -1,6 +1,6 @@
 require('./send.scss');
 
-export default function SendDialogController($scope, $mdDialog, diag) {
+export default function SendDialogController($scope, $mdDialog, element) {
 
     $scope.cancel = $mdDialog.cancel;
     $scope.tablets = [];
@@ -10,7 +10,7 @@ export default function SendDialogController($scope, $mdDialog, diag) {
     $scope.period = '';
     $scope.amount = '';
     $scope.description = '';
-    $scope.diag = diag;
+    $scope.element = element;
 
     $scope.addTablet = (form) => {
         $scope.tablets.push(createNewTablet());
@@ -27,6 +27,21 @@ export default function SendDialogController($scope, $mdDialog, diag) {
 
     $scope.removeTablet = (tablet) => {
         $scope.tablets = $scope.tablets.filter(item => !equal(tablet, item))
+    };
+
+    $scope.save = () => {
+        if (!_.isEmpty($scope.tablets)) {
+            let message = $scope.tablets.map(tablet => `${tablet.name} ${tablet.amount}, ${tablet.interval}, ${tablet.period}`).join("\n");
+            element.history.push({
+                text: `Назначено к применению: \n${message}`,
+                date: moment().format("MM/DD/YY, LT"),
+                id: new Date()
+            });
+        }
+        $mdDialog.hide(JSON.stringify({
+            text: $scope.description,
+            tablets: $scope.tablets
+        }));
     };
 
     function equal(v1, v2) {

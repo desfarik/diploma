@@ -9,16 +9,16 @@
         </i>
     </div>
     <div class="page-content" flex="grow" layout="column">
-        <div layout="row">
+        <div layout="row" class="content-wrap">
             <div layout="column">
                 <div class="user-column">
-                    <div ng-repeat="name in [1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,18,19]"
+                    <div ng-repeat="patient in patients.patients"
                          class="user  ma-button" layout="row"
                          layout-align="start center"
-                         ng-class="{'active': patients.selecteDialog === name}"
-                         ng-click="patients.go(name)">
-                        <ma-name ma-name="'Д'"></ma-name>
-                        <span class="full-name">{{name}}</span>
+                         ng-class="{'active': patients.selectedPatient.id === patient.id}"
+                         ng-click="patients.go(patient)">
+                        <ma-name ma-patient="patient"></ma-name>
+                        <span class="full-name">{{patients.getDisplayPatient(patient)}}</span>
                     </div>
                 </div>
             </div>
@@ -26,11 +26,7 @@
                 <div class="patient-info" layout="column">
                     <div layout="row">
                         <span flex="30" class="details" translate="private.patients.fio"></span>
-                        <span flex="grow">{{"sdfsdfsdfsf"}}</span>
-                        <i class="material-icons ma-button"
-                           ng-click="patients.goToCalendar()">
-                            event_note
-                        </i>
+                        <span flex="grow">{{patients.getDisplayPatient(patients.selectedPatient)}}</span>
                         <i class="material-icons ma-button"
                            ng-click="patients.goToChat()">
                             chat
@@ -38,7 +34,7 @@
                     </div>
                     <div layout="row">
                         <span flex="30" class="details" translate="private.patients.phone"></span>
-                        <span flex="grow"></span>
+                        <span flex="grow">{{patients.selectedPatient.details.phone}}</span>
                     </div>
                 </div>
                 <div class="disease-block">
@@ -51,31 +47,41 @@
                     <div class="headers" layout="row">
                         <div flex="40" translate="private.patients.diag"></div>
                         <div flex="30" translate="private.patients.dates"></div>
-                        <div flex="grow" translate="private.patients.actions"></div>
+                        <div flex="grow" class="actions" translate="private.patients.actions"></div>
                     </div>
-                    <div class="content">
-                        <div class="disease-item" ng-repeat="disease in patients.selectedPatientHistory"
+                    <div class="content" ng-show="patients.history.length">
+                        <div class="disease-item"
+                             ng-repeat="element in patients.history | orderBy:id:true track by element.id"
                              layout="row">
-                            <div flex="40">{{disease}}</div>
-                            <div flex="40">{{1231}}</div>
-                            <div flex="grow">
-                                <i ng-show="disease%2" class="material-icons ma-button" ng-click="patients.openEditDialog(disease)">
+                            <div flex="40">{{element.diag}}</div>
+                            <div flex="40" class="dates">{{patients.getDate(element)}}</div>
+                            <div flex="grow" class="actions">
+                                <i ng-show="element.active" class="material-icons ma-button"
+                                   ng-click="patients.openEditDialog(element)">
                                     edit
                                 </i>
-                                <i ng-show="disease%2" class="material-icons ma-button" ng-click="patients.openSendDialog(disease)">
+                                <i ng-show="element.active" class="material-icons ma-button"
+                                   ng-click="patients.openSendDialog(element)">
                                     mobile_screen_share
                                 </i>
-                                <i ng-show="disease%2" class="material-icons ma-button" ng-click="patients.openCloseDialog()">
+                                <i ng-show="element.active" class="material-icons ma-button"
+                                   ng-click="patients.openCloseDialog(element)">
                                     info
                                 </i>
-                                <i ng-show="disease%2" class="material-icons ma-button" ng-click="patients.finishHistoryElement(disease)">
+                                <i ng-show="element.active" class="material-icons ma-button"
+                                   ng-click="patients.finishHistoryElement(element)">
                                     done
                                 </i>
-                                <i ng-hide="disease%2" class="material-icons ma-button">
+                                <i ng-hide="element.active" class="material-icons ma-button"
+                                   ng-click="patients.openViewDialog(element)">
                                     find_in_page
                                 </i>
                             </div>
                         </div>
+                    </div>
+                    <div ng-hide="patients.history.length" class="empty-message" layout="row"
+                         layout-align="center center">
+                        <span translate="private.patients.empty"></span>
                     </div>
                 </div>
             </div>

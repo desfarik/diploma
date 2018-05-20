@@ -1,14 +1,14 @@
 <md-dialog class="edit-dialog">
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <h2 flex="grow" translate="private.patients.dialog.edit.title"></h2>
+            <h2 flex="grow" translate="{{'private.patients.dialog.edit.title' + (view ? '1' : '2')}}"></h2>
             <md-button class="md-icon-button" ng-click="cancel()">
                 <md-icon class="material-icons">close</md-icon>
             </md-button>
         </div>
     </md-toolbar>
     <md-dialog-content flex="grow" layout="row">
-        <div layout="column" class="config-container">
+        <div ng-hide="view" layout="column" class="config-container">
             <h4 translate="private.patients.dialog.edit.subtitle1"></h4>
             <div class="separate"></div>
             <div class="configs-wrapper">
@@ -27,25 +27,26 @@
             <div layout="column" class="body-wrapper">
                 <div flex="10" layout="row" class="diag-wrapper">
                     <span class="field" translate="private.patients.dialog.edit.diag"></span>
-                    <md-input-container>
+                    <md-input-container ng-hide="view">
                         <input required ng-model="diag">
                     </md-input-container>
-                    <i class="material-icons ma-button" ng-click="editDiag()">
+                    <i class="material-icons ma-button" ng-hide="view" ng-click="editDiag()">
                         edit
                     </i>
+                    <span ng-show="view">{{diag}}</span>
                 </div>
                 <div class="chronology-wrapper" layout="column" flex>
                     <span class="field" translate="private.patients.dialog.edit.chronology"></span>
                     <div class="history" layout="column">
-                        <div class="element" layout="row" ng-repeat="action in history | orderBy:id:true">
+                        <div class="element" layout="row" ng-repeat="action in history.history | orderBy:id:true">
                             <div flex="70" class="text" layout="row" layout-align="start center">
                                 <p>{{action.text}}</p>
                             </div>
                             <div flex layout-align="center center" layout="row">
                                 <span>{{action.date}}</span>
-                                <i ng-hide="EDIT_MODE" class="material-icons ma-button"
+                                <i ng-hide="EDIT_MODE || view" class="material-icons ma-button"
                                    ng-click="editText(action)">edit</i>
-                                <i ng-hide="EDIT_MODE" class="material-icons ma-button" ng-click="deleteText(action)">close</i>
+                                <i ng-hide="EDIT_MODE || view" class="material-icons ma-button" ng-click="deleteText(action)">close</i>
                             </div>
                         </div>
                     </div>
@@ -54,8 +55,8 @@
         </div>
     </md-dialog-content>
     <md-dialog-actions layout="row" class="dialog-footer">
-        <md-button class="md-raised md-primary md-button md-ink-ripple">
-            <span translate="private.patients.dialog.edit.save"></span>
+        <md-button class="md-raised md-primary md-button md-ink-ripple" ng-click="save()">
+            <span translate="{{'private.patients.dialog.edit.' + (view ? 'ok' : 'save')}}"></span>
         </md-button>
     </md-dialog-actions>
 </md-dialog>

@@ -17,6 +17,13 @@
     padding: 0;
     height: 0;
 
+    .content-wrap {
+      height: 100%;
+      .empty-message {
+        height: 50%;
+      }
+    }
+
     .user-column {
       border-right: 1px solid $border-color;
       min-width: 370px;
@@ -113,6 +120,12 @@
     .disease-item:first-child {
       border-top: 1px solid $disabled-color-2;
     }
+  }
+  .actions {
+    min-width: 230px;
+  }
+  .dates {
+    min-width: 175px;
   }
 }
 

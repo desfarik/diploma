@@ -6,7 +6,7 @@ export default function NameDirective() {
     return {
         restrict: 'E',
         scope: {
-            name: '=maName'
+            patient: '=maPatient'
         },
         link: (scope, element) => {
             element[0].firstChild.classList.add(getRandomColor());
