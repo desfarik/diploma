@@ -2,7 +2,7 @@ import template from './menu.html'
 
 require('./menu.scss');
 
-export default function MenuDirective($mdSidenav, $state, TokenService) {
+export default function MenuDirective($mdSidenav, $state, TokenService, ToastService) {
     return {
         restrict: 'E',
         template,
@@ -16,11 +16,12 @@ export default function MenuDirective($mdSidenav, $state, TokenService) {
 
             scope.closeMenu = (state) => {
                 $mdSidenav('right').toggle();
-                $state.go(state,{userId:123});
+                $state.go(state, {userId: 123});
             };
 
-            scope.logout = ()=> {
+            scope.logout = () => {
                 TokenService.clear();
+                ToastService.stop();
                 $mdSidenav('right').toggle();
                 $state.go('login');
             }

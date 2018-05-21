@@ -21,6 +21,7 @@ export default function MainController($state, $rootScope, ToastService) {
 
     const isPublicState = (state) => state.data && state.data.publicState;
 
-
-    ToastService.start();
+    if (localStorage.token) {
+        ToastService.start();
+    }
 }

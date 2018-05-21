@@ -53,7 +53,7 @@
                     <label translate="public.reset.repeating_password"></label>
                     <input type="password" required name="password2" ng-model="reset.password2"
                            ng-focus="reset.clearError(resetForm.password2, 'repeatingPassword')"
-                           ng-minlength="9">
+                           ng-minlength="8">
                     <div ng-messages="resetForm.password2.$error">
                         <span ng-message="required" translate="required"></span>
                         <span ng-message="minlength" translate="public.registration.passwordLength"></span>
