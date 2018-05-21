@@ -9,7 +9,9 @@ export default function UserService($http) {
                     p.details = JSON.parse(p.details);
                     return p;
                 });
-                localStorage.patients = JSON.stringify(patient);
+                if(patient && !_.isEmpty(patient)){
+                    localStorage.patients = JSON.stringify(patient);
+                }
                 return patient;
             })
         }

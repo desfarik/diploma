@@ -1,23 +1,20 @@
-<div class="chats-container" layout="column">
+<div class="chats-container" layout="column" cg-busy="chat.loading">
     <div class="page-header" layout="row" layout-align="start center">
         <i class="material-icons">message</i>
         <span translate="private.chats.title"></span>
     </div>
     <div class="page-content" flex="grow" layout="column">
-        <div layout="row">
+        <div layout="row" style="height: 100%">
             <div layout="column">
                 <div class="user-column">
-                    <div ng-repeat="name in [1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,18,19]"
+                    <div ng-repeat="patient in chat.getPatients()"
                          class="user  ma-button" layout="row"
                          layout-align="start center"
-                         ng-class="{'has-message': chat.hasMessage.includes(name),
-                                    'active': chat.selecteDialog === name}"
-                         ng-click="chat.go(name)">
-                        <ma-name ma-name="'Д'"></ma-name>
-                        <div layout="column">
-                            <span class="full-name">{{name}}</span>
-                            <span class="last-message">122222222222222 222222222222 23123 12 bla</span>
-                        </div>
+                         ng-class="{'active': chat.selectedPatient.id === patient.id,
+                                    'not-seen': patient.hasMessage}"
+                         ng-click="chat.selectPatient(patient)">
+                        <ma-name ma-patient="patient"></ma-name>
+                        <span class="full-name">{{chat.getDisplayPatient(patient)}}</span>
                     </div>
                 </div>
             </div>
@@ -25,8 +22,8 @@
                 <div ng-show="chat.messages.length" class="chat-wrapper">
                     <div id="chat" class="chat-area">
                         <div ng-repeat="message in chat.messages">
-                            <div class="message" ng-class="{'patient-message': message.patient}">
-                                <span>{{message.message}}</span>
+                            <div class="message" ng-class="{'patient-message': !message.doctor}">
+                                <span>{{message.data}}</span>
                             </div>
                         </div>
                     </div>

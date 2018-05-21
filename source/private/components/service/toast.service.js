@@ -1,23 +1,44 @@
 import template from "../directive/toast/toast.html";
 
-export default function ToastService($interval, $mdToast) {
+export default function ToastService($interval, $mdToast, $http, $rootScope) {
 
-    let interval;
+    let stopTime;
     this.start = () => {
-        showToast();
-/*        interval = $interval(showToast, 5000);*/
+        stopTime = $interval(this.check, 5000);
     };
 
-    this.stop = () => interval();
+    this.stop = () => $interval.cancel(stopTime);
 
-    function showToast() {
+    this.check = () => {
+        $http.get('api/toast/check/' + JSON.stringify(getLastUpdateDate()))
+            .then(response => {
+                console.log(response);
+                if (response.data.data === "chat") {
+                    $rootScope.$broadcast("updateMessages");
+                    showToast("chats");
+                    this.stop();
+                }
+                if (response.data.data === "calendar") {
+                    showToast("calendar");
+                    this.stop();
+                }
+            })
+    };
+
+    function showToast(page) {
         $mdToast.show({
             hideDelay: 0,
             position: 'bottom right',
             controller: 'ToastController',
             template: template,
-            locals: {text: "chats", page: "chats"}
+            locals: {page: page}
         });
+    }
+
+
+    function getLastUpdateDate() {
+        let date = localStorage.getItem('lastUpdateCalendar');
+        return date !== "undefined" && !!date ? JSON.parse(date) : new Date();
     }
 
 }

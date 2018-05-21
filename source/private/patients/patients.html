@@ -16,7 +16,7 @@
                          class="user  ma-button" layout="row"
                          layout-align="start center"
                          ng-class="{'active': patients.selectedPatient.id === patient.id}"
-                         ng-click="patients.go(patient)">
+                         ng-click="patients.selectPatient(patient)">
                         <ma-name ma-patient="patient"></ma-name>
                         <span class="full-name">{{patients.getDisplayPatient(patient)}}</span>
                     </div>

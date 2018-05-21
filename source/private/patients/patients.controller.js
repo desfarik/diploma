@@ -6,9 +6,12 @@ import editTemplate from "./dialog/edit/edit.html";
 export default function PatientsController($mdDialog, $translate, $state, UserService, $stateParams, PatientsService) {
     let vm = this;
 
-    vm.go = (userId) => {
-        vm.selecteDialog = userId;
+    vm.selectPatient = (patient) => {
+        vm.selectedPatient = patient;
+        vm.history = [];
+        loadHistory(patient.id);
     };
+
     vm.history = [];
 
     init();
@@ -19,14 +22,21 @@ export default function PatientsController($mdDialog, $translate, $state, UserSe
                 vm.selectedPatient = vm.patients.filter(p => p.id === $stateParams.userId)[0] || vm.patients[0];
                 return vm.selectedPatient.id;
             }
-        ).then(PatientsService.getHistory)
-            .then(response => {
-                if (response.data && response.data.data) {
-                    vm.history = JSON.parse(response.data.data);
-                    console.log(vm.history);
-                }
-            })
+        ).then(loadHistory);
     }
+
+    function loadHistory(userId) {
+        PatientsService.getHistory(userId).then(response => {
+            if (response.data && response.data.data) {
+                vm.history = JSON.parse(response.data.data);
+                console.log(vm.history);
+            }
+        })
+    }
+
+    vm.goToChat = () => {
+        $state.go("chats", {userId: vm.selectedPatient.id});
+    };
 
     vm.getDisplayPatient = (patient) => {
         if (patient && patient.details) {
@@ -66,7 +76,7 @@ export default function PatientsController($mdDialog, $translate, $state, UserSe
         clickOutsideToClose: true,
         fullscreen: true,
         locals: {element: element}
-    })  .then((data) => PatientsService.sendToMobile(vm.selectedPatient.id, data))
+    }).then((data) => PatientsService.sendToMobile(vm.selectedPatient.id, data))
         .then(saveHistory);
 
     vm.openEditDialog = (element) => {
@@ -93,10 +103,6 @@ export default function PatientsController($mdDialog, $translate, $state, UserSe
                 view: true
             }
         })
-    };
-
-    vm.goToChat = () => {
-        $state.go("chats", {userId: vm.selecteDialog});
     };
 
     function openAddingDialog(translates) {

@@ -16,13 +16,13 @@ export default function CalendarHttpService($http) {
         lastUpdate: getLastUpdateDate()
     }).then(response => {
         localStorage.calendar = JSON.stringify({months: calendar, schedule: schedule});
-        localStorage.lastUpdateCalendar = JSON.stringify(getLastUpdateDate());
+        localStorage.lastUpdateCalendar = JSON.stringify(response.data.data);
         return response;
     });
 
     function getLastUpdateDate() {
-        let date = localStorage.lastUpdateCalendar;
-        return date ? JSON.parse(date) : new Date();
+        let date = localStorage.getItem('lastUpdateCalendar');
+        return date !== "undefined" && !!date ? JSON.parse(date) : new Date();
     }
 
     function getCalendars() {

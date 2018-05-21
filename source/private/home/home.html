@@ -1,1 +1,30 @@
-<div>home</div>
+<div layout="row" class="home-content" cg-busy="home.loading">
+    <div flex="66" class="separate-column">
+        <div class="header">
+            <span translate="private.home.news_title"></span>
+        </div>
+        <div class="content">
+            <div class="news-content">
+                <a class="new-item" ng-repeat="item in home.news" ng-href="{{item.url}}" target="_blank">
+                    <img ng-src="{{item.src}}">
+                    <div class="news-text">
+                        <span>{{item.text}}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div flex="33" class="separate-column">
+        <div class="header">
+            <span translate="private.home.calendar_title"></span>
+        </div>
+        <div class="content">
+            <div class="calendar-content">
+                <div class="talon-wrapper" ng-repeat="talon in home.day.talons">
+                    <div class="talon-time" ng-class="{active: talon.patient}">{{talon.time}}</div>
+                    <span class="talon-patient ma-button" ng-click="home.goToPatient(talon.patient)">{{home.getDisplayPatient(talon.patient)}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

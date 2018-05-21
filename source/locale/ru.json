@@ -19,6 +19,10 @@
       "calendar": "Календарь",
       "patients": "Мои пациенты"
     },
+    "home": {
+      "news_title": "Новости",
+      "calendar_title": "Календарь"
+    },
     "person": {
       "title": "Личный кабинет",
       "upload": "Загрузить фото",

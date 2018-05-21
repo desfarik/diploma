@@ -6,6 +6,7 @@ export default function PrivateRouter($stateProvider) {
         name: 'home',
         url: '/',
         template,
-        controller: homeController
+        controller: homeController,
+        controllerAs: 'home'
     })
 }

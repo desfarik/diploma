@@ -1,15 +1,16 @@
-export default function ToastController($mdToast, text, page, $scope, $state) {
+export default function ToastController($mdToast, page, $scope, $state, ToastService) {
     let vm = $scope;
 
-    vm.text = text;
     vm.page = page;
 
     vm.goToPage = () => {
+        ToastService.start();
         $mdToast.hide();
-        $state.go(page);
+        $state.go(page, {}, {reload: true});
     };
 
     vm.closeToast = () => {
-        $mdToast.hide()
+        ToastService.start();
+        $mdToast.hide();
     }
 }

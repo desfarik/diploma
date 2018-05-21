@@ -20,6 +20,7 @@
       overflow-y: auto;
       overflow-x: hidden;
       .user {
+        height: 65px;
         border-bottom: 1px solid $border-color;
         ma-name {
           padding: 0 8px;
@@ -37,7 +38,7 @@
       .user.active {
         background-color: $blue-text-color !important;
       }
-      .user.has-message {
+      .user.not-seen {
         background-color: $orange;
       }
     }
